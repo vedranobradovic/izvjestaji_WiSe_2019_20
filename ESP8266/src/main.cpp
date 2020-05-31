@@ -1,7 +1,6 @@
 #include <ThingSpeak.h>
 #include <ESP8266WiFi.h>
 #include <Wire.h>
-#include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_BME680.h"
 
@@ -13,8 +12,6 @@
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 Adafruit_BME680 bme; // I2C
-//Adafruit_BME680 bme(BME_CS); // hardware SPI
-//Adafruit_BME680 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK);
 
 unsigned long delayTime;
 
@@ -41,10 +38,11 @@ unsigned int cField = 8;
 float aConst;
 float bConst;
 float cConst;
+
 float temp;
 float hum;
 float press;
-float gass;
+float gas;
 
 unsigned long lastConnectionTime = 0;
 long lastUpdateTime = 0;
@@ -102,7 +100,6 @@ void setup()
   bme.setHumidityOversampling(BME680_OS_2X);
   bme.setPressureOversampling(BME680_OS_4X);
   bme.setIIRFilterSize(BME680_FILTER_SIZE_3);
-  bme.setGasHeater(320, 150); // 320*C for 150 ms
 
   Serial.println("-- Default Test --");
   delayTime = 1000;
@@ -138,53 +135,19 @@ void loop()
     Serial.println(F("Failed to begin reading :("));
     return;
   }
-  Serial.print(F("Reading started at "));
-  Serial.print(millis());
-  Serial.print(F(" and will finish at "));
-  Serial.println(endTime);
 
-  Serial.println(F("You can do other work during BME680 measurement."));
-  delay(50); // This represents parallel work.
-  // There's no need to delay() until millis() >= endTime: bme.endReading()
-  // takes care of that. It's okay for parallel work to take longer than
-  // BME680's measurement time.
-
-  // Obtain measurement results from BME680. Note that this operation isn't
-  // instantaneous even if milli() >= endTime due to I2C/SPI latency.
   if (!bme.endReading())
   {
     Serial.println(F("Failed to complete reading :("));
     return;
   }
 
-  int i;
-
   lastUpdateTime = millis();
   temp = bme.readTemperature();
   hum = bme.readHumidity();
   press = bme.readPressure() / 100.0;
-  //gass = bme.gas_resistance() / 1000.0;
-
-  Serial.print(F("Reading completed at "));
-  Serial.println(millis());
-
-  Serial.print(F("Temperature = "));
-  Serial.print(temp);
-  Serial.println(F(" *C"));
-
-  Serial.print(F("Pressure = "));
-  Serial.print(press);
-  Serial.println(F(" hPa"));
-
-  Serial.print(F("Humidity = "));
-  Serial.print(hum);
-  Serial.println(F(" %"));
-
-  Serial.print(F("Gas = "));
-  Serial.print(bme.gas_resistance / 1000.0);
-  Serial.println(F(" KOhms"));
 
   Serial.println();
-  write2TSData(channelID, dataFieldOne, temp, dataFieldTwo, hum, dataFieldThree, press);
-  delay(20000);
+  write2TSData(channelID, dataFieldOne, temp, dataFieldTwo, hum, dataFieldThree, press); //upisivanje podataka na ThingSpeak
+  ESP.deepSleep(900e6);                                                                  //deep sleep 15 min
 }

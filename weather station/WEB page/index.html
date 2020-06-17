@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Weather ststion" />
+    <meta name="keywords" content="HTML,CSS,JavaScript" />
+    <meta name="author" content="Vedran Obradović" />
+    <title>Weather station</title>
+    <link href="https://fonts.googleapis.com/css?family=Mali&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    
+
+
+    <!-- Povezivanje vanjskog CSS dokumenta s HTML-om -->
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
+  </head>
+
+  <body>
+    <!-- Header/Zaglavlje: Logo, glavni naslov i navigacija-->
+    <header>
+      <div class="container">
+        <h2>Weather station</h2>
+        <h5>by</h5>
+        <img src="./images/hortus.png" alt="Hortus banner" />
+      </div>
+    </header>
+  <main>
+    <!--<a class="ikona">
+    <i class="fas fa-temperature-low"></i>-->
+    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1067808/widgets/185707"></iframe>
+
+    
+    <!--<a class="ikona">
+    <i class="fas fa-tint"></i>-->
+    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1067808/widgets/185708"></iframe>
+
+   
+    <!--<a class="ikona">
+    <i class="fas fa-tachometer-alt"></i>-->
+    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1067808/widgets/185709"></iframe>
+
+   
+    <div class="dno">
+    Location: Split
+    <a class="longtherm" href="https://thingspeak.com/channels/1067808" target="_blank">
+    GRAPHS
+    </a>
+    </div>
+   
+  </main>
+
+    <footer>
+      <p>
+        &copy;<em>2020, Sva prava pridržana</em>
+        <br />
+        <strong>Vedran Obradović,</strong>
+        <a class="web" href="http://www.hortus-capljina.com/" target="_blank">
+    Hortus-Čapljina
+    </a>
+      </p>
+    </footer>
+  </body>
+</html>

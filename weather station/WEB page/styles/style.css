@@ -1,0 +1,79 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+body {
+  /*font-family: Arial, sans-serif; */
+  font-family: 'Mali', cursive;
+  /* google font*/
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.5;
+  background-color: #ffff00;
+  margin: 0;
+  width: 500px;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background-color: #ffff00;
+}
+
+header div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+}
+
+header img {
+  width: 200px;
+}
+
+header h2 {
+  margin: 0;
+  padding: 12px 0;
+  font-size: 30px;
+}
+
+header h5 {
+  padding: 12px;
+}
+
+main {
+  padding-left: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+main a {
+  padding: 5px;
+}
+
+body {
+  padding: 0 16px;
+}
+
+.dno {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
